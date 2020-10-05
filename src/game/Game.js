@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { Screen } from './graphics/Screen';
+import { KeyboardEvents } from './input/KeyboardEvents';
 
 const DIMENSIONS = {
   width: 800,
@@ -18,8 +19,8 @@ export class Game {
     this._context = context;
 
     this._running = false;
-    this._oldTimeStamp = 0;
-    this._screen = null;
+
+    this._keyboardListener = new KeyboardEvents(this._canvas);
 
     this._checkProps();
   }
@@ -47,6 +48,7 @@ export class Game {
     this._running = true;
 
     this._screen = new Screen(this._width, this._height, this._context);
+    this._keyboardListener.listen();
 
     onComplete();
   }
@@ -54,30 +56,30 @@ export class Game {
   stop(onComplete = _.noop) {
     // Maybe unlisten events here?
     this._running = false;
-    this._screen = null;
+
+    this._keyboardListener.unlisten();
+
     onComplete();
   }
 
-  tick(timePassed) {
+  tick() {
     if (this._running) {
-      this.update(timePassed);
-      this.render();
+      this.update();
     }
   }
 
-  update(timePassed) {
-    this.square.update(timePassed);
+  update() {
+    this._screen.update();
   }
 
   render() {
-    // We want to start each render call by clearing everything and redraw it
-    this._clearCanvas();
+    if (this._running) {
+      // We want to start each render call by clearing everything and redraw it
+      this._screen.clear();
 
-    // Render the screen
-    this._screen.render();
-  }
-
-  _clearCanvas() {
-    this._context.clearRect(0, 0, this._width, this._height);
+      // Render the screen
+      this._screen.render();
+    }
+    // this.stop();
   }
 }

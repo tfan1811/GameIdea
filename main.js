@@ -31,10 +31,9 @@ if (process.platform === 'win32') {
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
     show: false,
     autoHideMenuBar: true,
+    fullScreen: true,
     webPreferences: {
       nodeIntegration: true
     }
@@ -62,6 +61,8 @@ function createWindow() {
 
   // Don't show until we are ready and loaded
   mainWindow.once('ready-to-show', () => {
+    mainWindow.maximize();
+    mainWindow.setResizable(false);
     mainWindow.show()
 
     // Open the DevTools automatically if developing
