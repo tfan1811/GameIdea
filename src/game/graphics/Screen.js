@@ -92,4 +92,20 @@ export class Screen {
     set height(height) {
       this._height = height;
     }
+
+    get worldX() {
+      return this._worldX;
+    }
+
+    set worldX(worldX) {
+      this._worldX = worldX;
+    }
+
+    get worldY() {
+      return this._worldY;
+    }
+
+    set worldY(worldY) {
+      this._worldY = worldY;
+    }
 }

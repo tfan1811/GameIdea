@@ -1,3 +1,5 @@
+import './assets/css/index.css';
+
 import { Game } from './game/Game';
 
 const props = {
@@ -27,12 +29,12 @@ let elapsed;
 window.onload = init;
 
 function init() {
+
   // Create a canvas element and add it to the DOM Tree
   canvas = document.createElement('canvas');
   canvas.id = 'game';
   canvas.width = props.width;
   canvas.height = props.height;
-  canvas.tabindex = '1';
   canvas.focus();
   context = canvas.getContext('2d');
   document.body.appendChild(canvas);

@@ -70,6 +70,20 @@ export class Game {
 
   update() {
     this._screen.update();
+    this._keyboardListener.update();
+
+    if (this._keyboardListener.up) {
+      this._screen.worldY--;
+    }
+    if (this._keyboardListener.down) {
+      this._screen.worldY++;
+    }
+    if (this._keyboardListener.left) {
+      this._screen.worldX--;
+    }
+    if (this._keyboardListener.right) {
+      this._screen.worldX++;
+    }
   }
 
   render() {
