@@ -1,0 +1,54 @@
+{
+  "name": "gameidea",
+  "version": "0.0.1",
+  "description": "A random game idea, no idea what it will become",
+  "main": "main.js",
+  "scripts": {
+    "clobber": "rm -rf node_modules/",
+    "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
+    "package": "npm run build",
+    "postpackage": "electron-packager ./ --out=./builds",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tfan1811/GameIdea.git"
+  },
+  "author": "Ryan Fandl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tfan1811/GameIdea/issues"
+  },
+  "homepage": "https://github.com/tfan1811/GameIdea#readme",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-arrow-functions": "^7.10.4",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
+    "electron": "^10.1.2",
+    "electron-packager": "^15.1.0",
+    "eslint": "^7.10.0",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^0.11.2",
+    "postcss": "^8.1.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^4.0.2",
+    "postcss-nested": "^5.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-pxtorem": "^5.1.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
